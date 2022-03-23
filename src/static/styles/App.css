@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+#root {
+  background: black;
+}
+
 .page {
   font-family: "Gilroy";
   font-weight: normal;
