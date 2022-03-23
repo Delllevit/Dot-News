@@ -18,20 +18,19 @@ const Footer = ({noSocial}) => {
 							<a href="tel:604-844-9034">604-844-9034</a>
 						</div>
 						<div className="item-text">
-							<a href="mailto:hello@evolvecreative.ca">hello@evolvecreative.ca</a>
+							<a href="mailto:info@dot-news.ua">info@dot-news.ua</a>
 						</div>
 					</div>
 					<div className="menu-item">
 						<div className="item-title">ОФІС</div>
 						<div className="item-text">
-							234873 Nelson St.
-							Vancouver, British Columbia
+							Сухомлинського, 1, Луцьк, Волинська область, 43000
 						</div>
 					</div>
 					<div className="menu-item">
 						<div className="item-title">КАР’ЄРА</div>
 						<div className="item-text">
-							<a href="mailto:career@evolvecreative.ca">career@evolvecreative.ca</a>
+							<a href="mailto:career@dot-news.ua">career@dot-news.ua</a>
 						</div>
 					</div>
 				</div>
