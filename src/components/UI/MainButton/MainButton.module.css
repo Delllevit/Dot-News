@@ -1,0 +1,15 @@
+.button {
+  padding: 5px 15px;
+  color: teal;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid teal;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.button:hover {
+  background: teal;
+  color: white;
+}
+
+/*# sourceMappingURL=MainButton.module.css.map */

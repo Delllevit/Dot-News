@@ -1,0 +1,67 @@
+.post_list {
+  display: flex;
+  max-width: 1160px;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: -100px 0px 0 70px;
+
+  .post {
+    width: 356px;
+    margin-bottom: 58px;
+    margin-right: 40px;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    .img_block {
+      a {
+        display: block;
+      }
+
+      img {
+        display: block;
+      }
+    }
+
+    .content_block {
+      height: 200px;
+      background-color: black;
+      padding: 30px 20px;
+
+      .title {
+        display: inline-block;
+        text-decoration: none;
+        font-family: Gilroy Medium;
+        font-size: 18px;
+        color: #F3125B;
+        letter-spacing: 0.3px;
+        line-height: 21px;
+        margin-bottom: 20px;
+        transition: all 0.4s ease-out;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .text {
+        font-size: 14px;
+        color: #FFFFFF;
+        letter-spacing: 0.5px;
+        line-height: 23px;
+        margin-bottom: 30px;
+      }
+      .category {
+        font-family: Gilroy Medium;
+        font-size: 16px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,82 @@
+.menu.active .btn span {
+  background-color: white;
+  opacity: 1;
+  transform: rotate(45deg) translate(-1px, -2px);
+}
+.menu.active .btn span:nth-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+.menu.active .btn span:nth-child(3) {
+  width: 28px;
+  transform: rotate(-45deg) translate(0, -3px);
+}
+.menu.active .links {
+  transform: none;
+}
+
+.btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  align-items: center;
+  position: relative;
+  top: 14px;
+  width: 28px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 40;
+}
+.btn span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #000;
+  z-index: 1;
+  transform-origin: 0% 0%;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), width 0.3s ease, opacity 0.55s ease;
+}
+.btn span:nth-child(2) {
+  transform-origin: 4px 0px;
+}
+.btn span:nth-child(3) {
+  transform-origin: 4px 0px;
+  width: 12px;
+}
+.btn:hover span:nth-child(3) {
+  width: 28px;
+}
+
+.links {
+  position: absolute;
+  width: 330px;
+  height: 100vh;
+  margin: -58px 0 0 -100px;
+  padding: 125px 50px 50px 94px;
+  background: black;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 39;
+}
+.links a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+.links a:hover {
+  color: #F3125B;
+}
+.links a li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*# sourceMappingURL=hamburger-menu.module.css.map */
