@@ -11,6 +11,8 @@
   font-style: normal;
   background-color: #FFD200;
   overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .page.black {
   background-color: black;
@@ -460,6 +462,7 @@
 .pagination.fixed {
   position: fixed;
   top: 0;
+  left: 1320px;
 }
 .pagination .title {
   font-family: Gilroy Light;
