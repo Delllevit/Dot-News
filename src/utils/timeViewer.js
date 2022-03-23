@@ -23,7 +23,7 @@ export const getTimeString = (time) => {
 	} else if (ostTime < 10800000) {
 		str = "3г тому";
 	} else {
-		str = "Опубликовано ......";
+		str = new Date(time).getDate().toString() + '/' + new Date(time).getMonth().toString();
 	}
 
 
