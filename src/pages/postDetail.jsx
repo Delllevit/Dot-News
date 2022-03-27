@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import Header from "../components/layout/header/header";
 import Footer from "../components/layout/footer/footer";
@@ -11,28 +11,18 @@ import logo from "../static/images/logo-white.svg";
 import postDetail from "../static/images/post-detail.png";
 import authorImage from "../static/images/user.png";
 import PostService from "../components/API/PostService";
-import {AuthContext} from "../context";
 import Comments from "../components/comments";
 
 const PostDetail = () => {
-	const params = useParams();
 	const navigate = useNavigate();
-	const {isAuth, setModalActive} = useContext(AuthContext);
+	const params = useParams();
 	const element = PostService.getByCode(params.url);
-	const [comments, setComments] = useState();
+	const [comments, setComments] = useState(PostService.getCommentByPostId(params.url));
 	const [commentValue, setCommentValue] = useState('');
 
-	useEffect(() => {
-		if (!element){
-			console.log('redirect');
-			return navigate("/404/");
-		}
-	},[element]);
-
-	useEffect(()=> {
-		setComments(PostService.getCommentByPostId(params.url))
-	}, [])
-
+	if (!element){
+		navigate("/404/");
+	}
 
 	const addComment = (e) => {
 		e.preventDefault();
@@ -42,10 +32,6 @@ const PostDetail = () => {
 		setComments(newComments);
 		setCommentValue('');
 	}
-
-
-
-
 
 	if(!element){
 		return (
@@ -62,27 +48,30 @@ const PostDetail = () => {
 				<div className="social">
 					<ul className="list">
 						<li>
-							<a href="https://dribbble.com/" target={"_blank"}>
-								<img src={dribble} alt=""/>
+							<a href="https://dribbble.com/" target="blank">
+								<img src={dribble} alt="dribbble"/>
 							</a>
 						</li>
 						<li>
-							<a href="https://facebook.com/" target={"_blank"}>
-								<img src={facebook} alt=""/>
+							<a href="https://facebook.com/" target="blank">
+								<img src={facebook} alt="facebook"/>
 							</a>
 						</li>
 						<li>
-							<a href="https://www.instagram.com/" target={"_blank"}>
-								<img src={instagram} alt=""/>
+							<a href="https://www.instagram.com/" target="blank">
+								<img src={instagram} alt="instagram"/>
 							</a>
 						</li>
 						<li>
-							<a href="https://twitter.com/" target={"_blank"}>
-								<img src={twitter} alt=""/>
+							<a href="https://twitter.com/" target="blank">
+								<img src={twitter} alt="twitter"/>
 							</a>
 						</li>
 					</ul>
-					<div className="title"><span></span> Ми в соц-мережах</div>
+					<div className="title">
+						<span> </span>
+						Ми в соц-мережах
+					</div>
 				</div>
 				<h1 className="post">{element.title}</h1>
 				<div className="post-image">
@@ -110,7 +99,7 @@ const PostDetail = () => {
 				</div>
 			</div>
 			<div className="text-container">
-				<div className="progress"></div>
+				<div className="progress"> </div>
 				<h2>Curabitur rhoncus sem maximus elit finibus</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non tortor efficitur, sagittis nisi et, pharetra felis. Sed iaculis blandit luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque bibendum, nunc id sollicitudin interdum, diam magna placerat ipsum, nec mollis dui libero eget massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at purus ornare, ultrices erat vitae, faucibus libero. Maecenas pretium lorem nec neque euismod, eu molestie lacus vulputate. Donec non pharetra diam. Mauris eget iaculis urna. Donec mollis ultricies cursus. Vivamus eu vulputate leo. Morbi vulputate ante sit amet lorem aliquet ultrices. Etiam sed aliquam lectus, in bibendum massa.
 					<br/>

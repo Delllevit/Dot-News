@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import MainButton from "./UI/MainButton/MainButton";
 import {AuthContext} from "../context";
 import UserService from "./API/UserService";
@@ -6,7 +6,7 @@ import {getTimeString} from "../utils/timeViewer";
 
 const Comments = ({elements, addCommentValue, setAddCommentValue, addComment}) => {
 	const {isAuth, setModalActive} = useContext(AuthContext);
-	let user = UserService.getUserInfo();
+	const userInfo = UserService.getUserInfo();
 
 	return (
 		<div className="comments-block">
@@ -14,7 +14,7 @@ const Comments = ({elements, addCommentValue, setAddCommentValue, addComment}) =
 			{isAuth
 				?
 				<div className="add-comment">
-					<div className="user-image">{user.name.substr(0, 1).toUpperCase()}</div>
+					<div className="user-image">{userInfo.name.substr(0, 1).toUpperCase()}</div>
 					<div className="add-form">
 						<form onSubmit={addComment}>
 							<textarea onChange={e => setAddCommentValue(e.target.value)} value={addCommentValue}/>

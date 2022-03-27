@@ -1,27 +1,22 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Header from "../components/layout/header/header";
 import logo from "../static/images/logo.svg";
 import TitleContainer from "../components/layout/TitleContainer/TitleContainer";
 import Footer from "../components/layout/footer/footer";
 import {AuthContext} from "../context";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MainInput from "../components/UI/MainInput/MainInput";
 import MainButton from "../components/UI/MainButton/MainButton";
 import UserService from "../components/API/UserService";
 
 const Personal = () => {
 	const navigate = useNavigate();
-	const {isAuth, isLoading} = useContext(AuthContext);
+	const {isAuth} = useContext(AuthContext);
 
-	useEffect(() => {
-		if (!isAuth && !isLoading){
-			return navigate("/");
+	if (!isAuth){
+		navigate("/");
+	}
 
-		}
-	},[isAuth]);
-
-	const nameRef = useRef();
-	const lastNameRef = useRef();
 	let user = UserService.getUserInfo();
 
 	const [userValues, setUserValues] = useState({

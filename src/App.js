@@ -1,27 +1,27 @@
-import './static/styles/App.css';
-import Index from "./pages";
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import PostDetail from "./pages/postDetail";
-import {AuthContext} from "./context";
 import React, {useEffect, useState} from "react";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import './static/styles/App.scss';
+import Index from "./pages";
 import PageNotFound from "./pages/pageNotFound";
+import PostDetail from "./pages/postDetail";
 import Login from "./components/Login";
 import Modal from "./components/UI/Modal/Modal";
 import Personal from "./pages/personal";
 import About from "./pages/about";
 import Contacts from "./pages/contacts";
+import {AuthContext} from "./context";
 
 function App() {
     const [modalActive, setModalActive] = useState(false);
     const [isAuth, setIsAuth] = useState(false);
-    const [isLoading, setloading] = useState(true);
+    const [isLoading, setLoading] = useState(true);
 
 
     useEffect(() => {
         if (localStorage.getItem('auth')) {
             setIsAuth(true);
         }
-        setloading(false);
+        setLoading(false);
     }, []);
 
     return (

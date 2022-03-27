@@ -11,7 +11,7 @@
 }
 
 .page {
-  font-family: "Gilroy";
+  font-family: Gilroy, serif;
   font-weight: normal;
   font-style: normal;
   background-color: #FFD200;
@@ -88,7 +88,7 @@
   height: 46px;
   padding: 0 44px;
   border: 2px solid #000;
-  font-family: Gilroy SemiBold;
+  font-family: "Gilroy SemiBold", serif;
   font-weight: 600;
   font-size: 16px;
   color: #000000;
@@ -125,7 +125,6 @@
   top: 14px;
   width: 28px;
   height: 26px;
-  cursor: pointer;
   z-index: 40;
 }
 .menu .btn span {
@@ -136,14 +135,14 @@
   position: relative;
   background: #000;
   z-index: 1;
-  transform-origin: 0% 0%;
+  transform-origin: 0 0;
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), width 0.3s ease, opacity 0.55s ease;
 }
 .menu .btn span:nth-child(2) {
-  transform-origin: 4px 0px;
+  transform-origin: 4px 0;
 }
 .menu .btn span:nth-child(3) {
-  transform-origin: 4px 0px;
+  transform-origin: 4px 0;
   width: 12px;
 }
 .menu .btn:hover span:nth-child(3) {
@@ -158,7 +157,7 @@
   background: black;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  transform-origin: 0% 0%;
+  transform-origin: 0 0;
   transform: translate(-100%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   z-index: 39;
@@ -203,8 +202,8 @@
   max-width: 1320px;
   margin: 50px auto 0 auto;
   display: flex;
-  justify-content: start;
-  align-items: end;
+  justify-content: flex-start;
+  align-items: flex-end;
   flex-direction: row;
   flex-wrap: wrap;
   padding-bottom: 245px;
@@ -225,7 +224,7 @@
   margin-bottom: 14px;
 }
 .title__container .social .title {
-  font-family: Gilroy Light;
+  font-family: Gilroy Light, serif;
   position: absolute;
   height: 18px;
   bottom: -17px;
@@ -247,11 +246,11 @@
   border-bottom: 2px solid black;
   position: absolute;
   top: 7px;
-  left: 0px;
+  left: 0;
 }
 .title__container h1 {
   margin-left: 88px;
-  font-family: Gilroy ExtraBold;
+  font-family: Gilroy ExtraBold, serif;
   font-size: 300px;
   line-height: 216px;
   color: #000000;
@@ -260,7 +259,7 @@
 .title__container h1.post {
   text-transform: uppercase;
   width: 920px;
-  font-family: Gilroy ExtraBold;
+  font-family: Gilroy ExtraBold, serif;
   font-size: 130px;
   line-height: 122px;
 }
@@ -291,12 +290,12 @@
 .title__container .post-info .info-items .info-item .item-title {
   margin-bottom: 8px;
   text-transform: uppercase;
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 14px;
   color: #555555;
 }
 .title__container .post-info .info-items .info-item .item-text {
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 16px;
   color: #FFFFFF;
 }
@@ -315,7 +314,7 @@
   width: 100%;
 }
 .title__container .post-info .user-info .user-name {
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 18px;
   color: #FFFFFF;
 }
@@ -324,7 +323,7 @@
   margin-left: 140px;
 }
 .title__container .preview-text h2 {
-  font-family: Gilroy Light;
+  font-family: Gilroy Light, serif;
   font-size: 30px;
   color: #000000;
 }
@@ -360,7 +359,7 @@
   left: 0;
 }
 .text-container h2 {
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 38px;
   color: #000000;
   margin-bottom: 32px;
@@ -369,7 +368,6 @@
   margin-top: 76px;
 }
 .text-container p {
-  font-family: Gilroy;
   font-size: 18px;
   color: #000000;
   line-height: 28px;
@@ -384,11 +382,7 @@
   justify-content: center;
   margin-bottom: 80px;
 }
-.comments-block .add-comment {
-  display: flex;
-  margin-bottom: 110px;
-}
-.comments-block .add-comment .user-image {
+.comments-block .user-image {
   min-width: 50px;
   height: 50px;
   background-color: #aaaaaa;
@@ -400,6 +394,10 @@
   align-items: center;
   font-size: 18px;
   margin-right: 26px;
+}
+.comments-block .add-comment {
+  display: flex;
+  margin-bottom: 110px;
 }
 .comments-block .add-comment .add-form {
   width: 760px;
@@ -418,25 +416,12 @@
   display: flex;
   margin-bottom: 50px;
 }
-.comments-block .comments .comment .user-image {
-  min-width: 50px;
-  height: 50px;
-  background-color: #aaaaaa;
-  border: 1px solid #555555;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  margin-right: 26px;
-}
 .comments-block .comments .comment .comment-info {
   display: flex;
   flex-wrap: wrap;
 }
 .comments-block .comments .comment .comment-info .user-name {
-  font-family: Gilroy SemiBold;
+  font-family: Gilroy SemiBold, serif;
   font-size: 18px;
   color: #000000;
 }
@@ -470,11 +455,11 @@
   left: 1320px;
 }
 .pagination .title {
-  font-family: Gilroy Light;
+  font-family: Gilroy Light, serif;
   font-size: 16px;
   color: #000000;
   letter-spacing: 0.8px;
-  margin: 84px 0px 0px 64px;
+  margin: 84px 0 0 64px;
   display: inline-block;
   transform-origin: 0 0;
   transform: rotate(-90deg);
@@ -488,7 +473,7 @@
   margin-top: 20px;
 }
 .pagination ul li {
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 14px;
   color: #000000;
   text-align: center;
@@ -506,7 +491,7 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 120px;
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 22px;
   color: #000000;
   letter-spacing: 0.45px;
@@ -519,7 +504,7 @@
   height: 46px;
   width: 46px;
   background: #F3125B;
-  font-family: Gilroy UltraLight;
+  font-family: Gilroy UltraLight, serif;
   font-size: 42px;
   color: #FFFFFF;
   letter-spacing: 1.12px;
@@ -531,7 +516,7 @@
 footer {
   background-color: white;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 footer .footer-block {
   min-width: 1120px;
@@ -559,7 +544,7 @@ footer .footer-block .menu .menu-item:nth-child(3n) {
 }
 footer .footer-block .menu .menu-item .item-title {
   text-transform: uppercase;
-  font-family: Gilroy Medium;
+  font-family: Gilroy Medium, serif;
   font-size: 18px;
   color: #F3115B;
   letter-spacing: 0.6px;
@@ -593,7 +578,7 @@ footer .footer-block .up a svg {
   fill: currentColor;
 }
 footer .footer-block .copyright {
-  font-family: Gilroy Light;
+  font-family: Gilroy Light, serif;
   font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 0.34px;

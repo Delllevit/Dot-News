@@ -385,10 +385,7 @@ export default class PostService {
 	}
 
 	static getByCode(code) {
-		let response = {};
-		response = posts.find(post => post.url === code);
-
-		return response;
+		return posts.find(post => post.url === code);
 	}
 
 	static getComments(){
@@ -411,14 +408,12 @@ export default class PostService {
 		let response = [];
 		let commentsAr = this.getComments();
 
-		{commentsAr.map(comment => {
-
+		commentsAr.forEach((comment) => {
 			if( comment.postCode === code ) {
 				comment.user = UserService.getUserInfo();
 				response.push(comment);
 			}
-
-		})}
+		})
 
 		return response;
 	}
