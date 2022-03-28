@@ -472,7 +472,7 @@
   align-items: center;
   margin-top: 20px;
 }
-.pagination ul li {
+.pagination ul li button {
   font-family: Gilroy Medium, serif;
   font-size: 14px;
   color: #000000;
@@ -480,8 +480,10 @@
   margin-bottom: 18px;
   transition: all 0.4s ease-out;
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
-.pagination ul li:hover, .pagination ul li.current {
+.pagination ul li button:hover, .pagination ul li button.current {
   color: #F21057;
 }
 

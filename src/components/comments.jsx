@@ -1,60 +1,64 @@
-import React, {useContext} from 'react';
-import MainButton from "./UI/MainButton/MainButton";
-import {AuthContext} from "../context";
-import UserService from "./API/UserService";
-import {getTimeString} from "../utils/timeViewer";
+import React, { useContext } from 'react';
+import MainButton from './UI/MainButton/MainButton';
+import AuthContext from '../context';
+import UserService from './API/UserService';
+import { getTimeString } from '../utils/timeViewer';
 
-const Comments = ({elements, addCommentValue, setAddCommentValue, addComment}) => {
-	const {isAuth, setModalActive} = useContext(AuthContext);
-	const userInfo = UserService.getUserInfo();
+function Comments({
+  elements, addCommentValue, setAddCommentValue, addComment,
+}) {
+  const { isAuth, setModalActive } = useContext(AuthContext);
+  const userInfo = UserService.getUserInfo();
 
-	return (
-		<div className="comments-block">
+  return (
+    <div className="comments-block">
 
-			{isAuth
-				?
-				<div className="add-comment">
-					<div className="user-image">{userInfo.name.substr(0, 1).toUpperCase()}</div>
-					<div className="add-form">
-						<form onSubmit={addComment}>
-							<textarea onChange={e => setAddCommentValue(e.target.value)} value={addCommentValue}/>
-							<button>Отправить</button>
-						</form>
-					</div>
-				</div>
-				:
-				<div className="auth-block">
-					<MainButton onClick={() => setModalActive(true)}>Увійти</MainButton>
-				</div>
+      {isAuth
+        ? (
+          <div className="add-comment">
+            <div className="user-image">{userInfo.name.substr(0, 1).toUpperCase()}</div>
+            <div className="add-form">
+              <form onSubmit={addComment}>
+                <textarea onChange={(e) => setAddCommentValue(e.target.value)} value={addCommentValue} />
+                <button type="submit">Отправить</button>
+              </form>
+            </div>
+          </div>
+        )
+        : (
+          <div className="auth-block">
+            <MainButton onClick={() => setModalActive(true)}>Увійти</MainButton>
+          </div>
+        )}
 
-			}
+      <div className="comments">
 
-			<div className="comments">
+        {elements
+          ? (
+            <div>
+              {elements.map((comment) => (
+                <div key={comment.text} className="comment">
+                  <div className="user-image">{comment.user.name.substr(0, 1).toUpperCase()}</div>
+                  <div className="comment-info">
+                    <div className="user-name">
+                      {comment.user.name}
+                      {' '}
+                      {comment.user.lastName}
+                    </div>
+                    <div className="time">{getTimeString(comment.time)}</div>
+                    <div className="text">
+                      {comment.text}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )
+          : <div>Нет комментариев</div>}
 
-				{elements
-					?
-					<div>
-						{elements.map((comment, index) =>
-							<div key={index} className="comment">
-								<div className="user-image">{comment.user.name.substr(0, 1).toUpperCase()}</div>
-								<div className="comment-info">
-									<div className="user-name">{comment.user.name} {comment.user.lastName}</div>
-									<div className="time">{getTimeString(comment.time)}</div>
-									<div className="text">
-										{comment.text}
-									</div>
-								</div>
-							</div>
-						)}
-					</div>
-					:
-					<div>Нет комментариев</div>
-
-				}
-
-			</div>
-		</div>
-	);
-};
+      </div>
+    </div>
+  );
+}
 
 export default Comments;

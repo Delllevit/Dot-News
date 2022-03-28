@@ -1,42 +1,38 @@
 export default class UserService {
+  static login(setIsAuth) {
+    setIsAuth(true);
+    localStorage.setItem('auth', 'true');
+  }
 
-	static login(setIsAuth){
-		setIsAuth(true);
-		localStorage.setItem('auth', 'true');
-	}
+  static logout(setIsAuth) {
+    setIsAuth(false);
+    localStorage.removeItem('auth');
+  }
 
-	static logout(setIsAuth) {
-		setIsAuth(false);
-		localStorage.removeItem('auth');
-	}
+  static getUserInfo() {
+    let user = {
+      id: 1,
+      name: 'Ім\'я',
+      lastName: 'Прізвище',
+      email: 'test@gmail.com',
+    };
 
-	static getUserInfo(){
-		let user = {
-			id: 1,
-			name: 'Ім\'я',
-			lastName: 'Прізвище',
-			email: 'test@gmail.com'
-		};
+    if (!localStorage.getItem('user')) {
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      user = JSON.parse(localStorage.getItem('user'));
+    }
 
-		if (!localStorage.getItem('user')) {
-			localStorage.setItem('user', JSON.stringify(user));
+    return user;
+  }
 
-		}else{
-			user = JSON.parse(localStorage.getItem("user"));
-		}
+  static changeInfo(name, lastName, email) {
+    const user = this.getUserInfo();
 
-		return user;
-	}
+    user.name = name;
+    user.lastName = lastName;
+    user.email = email;
 
-	static changeInfo(name, lastName, email) {
-		let user = this.getUserInfo();
-
-		user.name = name;
-		user.lastName = lastName;
-		user.email = email;
-
-		localStorage.setItem('user', JSON.stringify(user));
-		console.log(user);
-
-	}
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 }
