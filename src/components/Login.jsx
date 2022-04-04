@@ -1,25 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import MainInput from './UI/MainInput/MainInput';
 import MainButton from './UI/MainButton/MainButton';
-import AuthContext from '../context';
-import UserService from './API/UserService';
+import {hideAuthForm, login} from '../store/actions';
 
 function Login() {
-  const { setIsAuth } = useContext(AuthContext);
+	const dispatch = useDispatch();
 
-  const login = (event) => {
-    event.preventDefault();
-    UserService.login(setIsAuth);
-  };
+	const eventSubmit = (event) => {
+		event.preventDefault();
 
-  return (
-    <form onSubmit={login}>
-      <h2>Авторизація</h2>
-      <MainInput type="text" placeholder="Логін" />
-      <MainInput type="password" placeholder="Пароль" />
-      <MainButton>Увійти</MainButton>
-    </form>
-  );
+		dispatch(login());
+		dispatch(hideAuthForm());
+	};
+
+	return (
+		<form onSubmit={eventSubmit} className="login-form">
+			<h2>Вхід</h2>
+			<MainInput type="text" placeholder="Логін" />
+			<MainInput type="password" placeholder="Пароль" />
+			<MainButton type="submit">Увійти</MainButton>
+		</form>
+	);
 }
 
 export default Login;

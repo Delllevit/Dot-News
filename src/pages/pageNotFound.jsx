@@ -1,20 +1,20 @@
 import React from 'react';
-import Header from "../components/layout/header/header";
-import logo from "../static/images/logo.svg";
-import TitleContainer from "../components/layout/TitleContainer/TitleContainer";
-import Footer from "../components/layout/footer/footer";
+import Header from '../components/layout/header/header';
+import logo from '../static/images/logo.svg';
+import TitleContainer from '../components/layout/TitleContainer/TitleContainer';
+import Footer from '../components/layout/footer/footer';
 
 const PageNotFound = () => {
 	return (
-		<div className="page">
+		<div className="page inner">
 			<Header
 				logo={logo}
 			/>
 			<TitleContainer
-				title={'404'}
+				title="404"
 			/>
 			<Footer
-				noSocial={true}
+				noSocial
 			/>
 		</div>
 	);

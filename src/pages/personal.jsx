@@ -1,59 +1,65 @@
-import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AuthContext from '../context';
-
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import Header from '../components/layout/header/header';
 import logo from '../static/images/logo.svg';
 import TitleContainer from '../components/layout/TitleContainer/TitleContainer';
 import Footer from '../components/layout/footer/footer';
-
 import MainInput from '../components/UI/MainInput/MainInput';
 import MainButton from '../components/UI/MainButton/MainButton';
-import UserService from '../components/API/UserService';
 
-function Personal() {
-  const navigate = useNavigate();
-  const { isAuth } = useContext(AuthContext);
+import {userChangeProps} from '../store/actions';
 
-  if (!isAuth) {
-    navigate('/');
-  }
+const Personal = () => {
+	const dispatch = useDispatch();
 
-  const user = UserService.getUserInfo();
+	const [userName, setUserName] = useState('');
+	const [userLastName, setUserLastName] = useState('');
+	const [userEmail, setUserEmail] = useState('');
 
-  const [userValues, setUserValues] = useState({
-    name: user.name,
-    lastName: user.lastName,
-    email: user.email,
-  });
+	const user = useSelector((state) => {
+		const { userReducer } = state;
+		return userReducer.userInfo;
+	});
 
-  const changeInfo = (e) => {
-    e.preventDefault();
+	useEffect(() => {
+		if (user.name) {
+			setUserName(user.name);
+			setUserLastName(user.lastName);
+			setUserEmail(user.email);
+		}
+	}, [user]);
 
-    UserService.changeInfo(userValues.name, userValues.lastName, userValues.email);
-  };
+	const eventSubmit = (e) => {
+		e.preventDefault();
 
-  return (
-    <div className="page">
-      <Header
-        logo={logo}
-      />
-      <TitleContainer
-        title="user"
-      />
-      <div className="post-container">
-        <form onSubmit={changeInfo}>
-          <MainInput type="text" value={userValues.name} onChange={(e) => setUserValues({ ...userValues, name: e.target.value })} />
-          <MainInput type="text" value={userValues.lastName} onChange={(e) => setUserValues({ ...userValues, lastName: e.target.value })} />
-          <MainInput type="email" value={userValues.email} onChange={(e) => setUserValues({ ...userValues, email: e.target.value })} />
-          <MainButton>Змінити</MainButton>
-        </form>
-      </div>
-      <Footer
-        noSocial
-      />
-    </div>
-  );
-}
+		dispatch(userChangeProps({
+			name: userName,
+			lastName: userLastName,
+			email: userEmail,
+		}));
+	};
+
+	return (
+		<div className="page inner">
+			<Header
+				logo={logo}
+			/>
+			<TitleContainer
+				title="user"
+			/>
+			<div className="post-container">
+				<form onSubmit={eventSubmit}>
+					<MainInput type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+					<MainInput type="text" value={userLastName} onChange={(e) => setUserLastName(e.target.value)} />
+					<MainInput type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+					<MainButton>Змінити</MainButton>
+				</form>
+			</div>
+			<Footer
+				noSocial
+			/>
+		</div>
+	);
+};
 
 export default Personal;

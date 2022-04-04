@@ -1,9 +1,8 @@
 import React from 'react';
-import cl from './MainButton.module.scss';
 
-const MainButton = ({children, ...props}) => {
+const MainButton = ({ children, ...props }) => {
 	return (
-		<button {...props} className={cl.button}>
+		<button {...props} className="button">
 			{children}
 		</button>
 	);
